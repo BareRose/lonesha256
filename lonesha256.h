@@ -22,7 +22,7 @@ lonesha256 function:
     returns 0 on success, may return non-zero in future versions to indicate error
 */
 
-//include only once
+//header section
 #ifndef LONESHA256_H
 #define LONESHA256_H
 
@@ -40,8 +40,11 @@ lonesha256 function:
 //lonesha256 declaration
 LSHA256DEF int lonesha256(unsigned char[32], const unsigned char*, size_t);
 
+#endif //LONESHA256_H
+
 //implementation section
 #ifdef LONESHA256_IMPLEMENTATION
+#undef LONESHA256_IMPLEMENTATION
 
 //includes
 #include <stdint.h> //uint32_t, uint64_t
@@ -138,4 +141,3 @@ LSHA256DEF int lonesha256 (unsigned char out[32], const unsigned char* in, size_
 }
 
 #endif //LONESHA256_IMPLEMENTATION
-#endif //LONESHA256_H
