@@ -46,10 +46,6 @@ LSHA256DEF int lonesha256(unsigned char[32], const unsigned char*, size_t);
 #ifdef LONESHA256_IMPLEMENTATION
 #undef LONESHA256_IMPLEMENTATION
 
-//includes
-#include <stdint.h> //uint32_t, uint64_t
-#include <string.h> //memcpy
-
 //macros
 #define S(x, n) (((((uint32_t)(x)&0xFFFFFFFFUL)>>(uint32_t)((n)&31))|((uint32_t)(x)<<(uint32_t)((32-((n)&31))&31)))&0xFFFFFFFFUL)
 #define R(x, n) (((x)&0xFFFFFFFFUL)>>(n))
@@ -80,6 +76,10 @@ LSHA256DEF int lonesha256(unsigned char[32], const unsigned char*, size_t);
         S[4] = S[3]; S[3] = S[2]; S[2] = S[1]; S[1] = S[0]; S[0] = t; \
     } \
     for (int i = 0; i < 8; i++) sha256_state[i] = sha256_state[i] + S[i];
+
+//includes
+#include <stdint.h> //uint32_t, uint64_t
+#include <string.h> //memcpy
 
 //lonesha256 function
 LSHA256DEF int lonesha256 (unsigned char out[32], const unsigned char* in, size_t len) {
